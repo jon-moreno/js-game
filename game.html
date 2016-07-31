@@ -1,0 +1,44 @@
+<html>
+<canvas id="gameCanvas" width="800" height="600"></canvas>
+	
+	<script>
+
+	var canvas; //dimensions of our display area; a container for graphics
+	var canvasContext; //graphical information itself
+
+	//When window finishes loading, run functions
+	//Otherwise code will begin running without entire script
+	window.onload = function(){
+
+		console.log("Hello World!");
+		canvas = document.getElementById('gameCanvas');
+		canvasContext = canvas.getContext('2d'); //returns an object that provides methods and properties for drawing on the canvas
+		
+		//Field/background
+		canvasContext.fillStyle = 'black';
+		canvasContext.fillRect(0,0, canvas.width, canvas.height);//(x-begin,y-begin,x-end,y-end)
+
+		//Centerline hardcode
+		//canvasContext.fillStyle = 'white';
+		//canvasContext.fillRect(395,285, 10, 30);//(x-begin,y-begin,x-end,y-end)
+		//to center an object do math
+		//center is 400*300; subtract half the object dimensions
+		
+		//Centerline loop
+		for(y=0; y<canvas.height; y+=31){
+			canvasContext.fillStyle = 'white';
+			canvasContext.fillRect(395, y, 10, 30);
+			//y += 30;
+		}
+		
+/*		//to draw an object in the center, do math
+		console.log("Hello World!");
+		canvas = document.getElementById('gameCanvas');
+		//canvas.getContext('2d');
+		canvas.fillStyle = 'black';
+		canvas.getContext('2d').fillRect(0,0,canvas.width,canvas.height);
+*/
+	}
+	
+	</script>
+</html>
