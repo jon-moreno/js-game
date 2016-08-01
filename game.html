@@ -5,14 +5,25 @@
 
 	var canvas; //dimensions of our display area; a container for graphics
 	var canvasContext; //graphical information itself
+	var ballX = 50; var ballY;
 
 	//When window finishes loading, run functions
 	//Otherwise code will begin running without entire script
 	window.onload = function(){
 
-		console.log("Hello World!");
+		//console.log("Hello World!");
 		canvas = document.getElementById('gameCanvas');
 		canvasContext = canvas.getContext('2d'); //returns an object that provides methods and properties for drawing on the canvas
+		
+		setInterval(drawEverything, 20);
+		//drawEverything();
+		
+	}
+	
+	function drawEverything(){
+		console.log("called drawEverything");
+		console.log("ballX = "+ballX);
+		ballX += 10;
 		
 		//Field/background
 		canvasContext.fillStyle = 'black';
@@ -24,12 +35,18 @@
 		//to center an object do math
 		//center is 400*300; subtract half the object dimensions
 		
-		//Centerline loop
+		//Centerline
 		for(y=0; y<canvas.height; y+=31){
 			canvasContext.fillStyle = 'white';
 			canvasContext.fillRect(395, y, 10, 30);
 			//y += 30;
 		}
+		
+		//Ball
+		canvasContext.fillStyle = 'red';
+		canvasContext.fillRect(ballX, 200, 50, 25);
+		//I want to test these methods
+		//fillText(); drawImage();
 		
 /*		//to draw an object in the center, do math
 		console.log("Hello World!");
@@ -38,6 +55,7 @@
 		canvas.fillStyle = 'black';
 		canvas.getContext('2d').fillRect(0,0,canvas.width,canvas.height);
 */
+	
 	}
 	
 	</script>
