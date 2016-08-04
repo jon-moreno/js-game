@@ -15,15 +15,23 @@
 		canvas = document.getElementById('gameCanvas');
 		canvasContext = canvas.getContext('2d'); //returns an object that provides methods and properties for drawing on the canvas
 		
-		setInterval(drawEverything, 20);
+		var framesPerSecond = 30; //used to convert ms in setInterval
+		//Calls moveEverything & drawEverything 30 times a second
+		setInterval(
+			function(){moveEverything(); drawEverything();}, 
+			1000/framesPerSecond
+		);
 		//drawEverything();
 		
+	}
+	
+	function moveEverything(){
+			ballX += 5;
 	}
 	
 	function drawEverything(){
 		console.log("called drawEverything");
 		console.log("ballX = "+ballX);
-		ballX += 10;
 		
 		//Field/background
 		canvasContext.fillStyle = 'black';
@@ -35,18 +43,22 @@
 		//to center an object do math
 		//center is 400*300; subtract half the object dimensions
 		
+		//Left Paddle
+		canvasContext.fillStyle = 'white';
+		canvasContext.fillRect(0, 210, 10, 100);
+		
+		//Ball
+		canvasContext.fillStyle = 'red';
+		canvasContext.fillRect(ballX, 100, 10, 10);
+		//I want to test these methods
+		//fillText(); drawImage();
+		
 		//Centerline
 		for(y=0; y<canvas.height; y+=31){
 			canvasContext.fillStyle = 'white';
 			canvasContext.fillRect(395, y, 10, 30);
 			//y += 30;
 		}
-		
-		//Ball
-		canvasContext.fillStyle = 'red';
-		canvasContext.fillRect(ballX, 200, 50, 25);
-		//I want to test these methods
-		//fillText(); drawImage();
 		
 /*		//to draw an object in the center, do math
 		console.log("Hello World!");
